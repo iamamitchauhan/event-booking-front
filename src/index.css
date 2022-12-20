@@ -1,3 +1,151 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Common Styling */
+
+* {
+    @apply m-0 box-border p-0 outline-none;
+}
+
+body {
+    @apply antialiased text-base font-MontserratRegular;
+}
+
+html {
+    @apply scroll-smooth;
+}
+
+img {
+    @apply max-w-full;
+}
+
+ul {
+    @apply list-none;
+}
+
+/* Custom Arrow Styling */
+
+/* Scrollbar CSS Start */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 14px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d0d0d0;
+  }
+  
+  /* Scrollbar CSS Ends */
+
+/* Styling for custom-datepicker Starts  */
+.custom-datepicker {
+    width: 100%;
+  }
+  
+  .custom-datepicker input[type=text] {
+    width: 100%;
+    border-bottom: 1px solid #1F75FE;
+    padding: 0px 6px 6px 6px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .custom-datepicker .react-datepicker-wrapper {
+    padding-top: 8px;
+  }
+  
+  .custom-datepicker input[type=text]::placeholder {
+    font-size: 16px;
+    color: #CCCCDB;
+    font-weight: 300;
+  }
+  
+  .custom-datepicker .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::before {
+    display: none;
+  }
+  
+  .custom-datepicker .react-datepicker-popper[data-placement^=top] .react-datepicker__triangle::after {
+    display: none;
+  }
+  
+  .custom-datepicker .react-datepicker__month-container>* {
+    font-size: 13px;
+    color: #07193A;
+    font-weight: 400;
+  }
+  
+  .custom-datepicker .react-datepicker {
+    border-color: transparent !important;
+    box-shadow: 0px 0px 20px #d3d0d0d9;
+  }
+  
+  .custom-datepicker .react-datepicker__header {
+    background-color: #fff !important;
+    border-bottom: 1px solid #f3f3f3 !important;
+  }
+  
+  .custom-datepicker .react-datepicker__header button {
+    font-size: 21px;
+    margin: 0px 10px;
+  }
+  
+  .custom-datepicker .react-datepicker__header select {
+    outline: none;
+    padding: 4px;
+  }
+  
+  .custom-datepicker .react-datepicker__day:hover,
+  .custom-datepicker .react-datepicker__month-text:hover,
+  .custom-datepicker .react-datepicker__quarter-text:hover,
+  .custom-datepicker .react-datepicker__year-text:hover,
+  .custom-datepicker .react-datepicker__day--selected,
+  .custom-datepicker .react-datepicker__day--in-range,
+  .custom-datepicker .react-datepicker__day--keyboard-selected {
+    border-radius: 4px;
+    background-color: #1F75FE !important;
+    color: #ffffff;
+  }
+  
+  .react-datepicker__close-icon{
+    padding-bottom: 6px !important;
+  }
+  
+.custom-datepicker .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range,
+.custom-datepicker .react-datepicker__month-text--in-range,
+.custom-datepicker .react-datepicker__quarter-text--in-range,
+.custom-datepicker .react-datepicker__year-text--in-range) {
+    background-color: #1F75FE !important;
+  }
+
+.custom-datepicker .react-datepicker__current-month,
+.custom-datepicker .react-datepicker-time__header,
+.custom-datepicker .react-datepicker-year-header {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.custom-datepicker .react-datepicker__day-name {
+    font-size: 12px;
+}
+
+.custom-datepicker .react-datepicker__navigation-icon::before {
+    border-width: 2px 2px 0 0;
+    top: 10px;
+}
+
+.custom-datepicker .react-datepicker__day--today {
+    font-weight: 500;
+}
+  
+  /* Styling for custom-datepicker Ends  */

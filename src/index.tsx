@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.css";
+import "./assets/fonts/fonts.css";
 
 import router from "./routing";
 

@@ -28,7 +28,7 @@ const Show = () => {
       end: "2022-12-21T06:00:00.000Z",
     },
   ]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date(moment().add("d", 1).format()));
@@ -55,7 +55,6 @@ const Show = () => {
         return [];
       }
     } catch (error) {
-      console.info("something went wrong!");
     } finally {
       setIsLoading(false);
     }
@@ -73,26 +72,37 @@ const Show = () => {
 
   return (
     <div>
-      <Header title="All Events" backUrl="/" />
-      <div>
-        <DatePicker selected={startDate} onChange={onChange} startDate={startDate} endDate={endDate} selectsRange inline />
-      </div>
-      <div>
-        <div>
-          {isLoading ? (
-            <div className="loading">Fetching...</div>
-          ) : (
-            events.map(({ id, start, end }: { id: string; start: string; end: string }, index) => {
-              return (
-                <div>
-                  <p>{id}</p>
-                  <span>{moment(start).local().format("YYYY-MM-DD HH:mm:ss")}</span>
-                  <br />
-                  <span>{moment(end).local().format("YYYY-MM-DD HH:mm:ss")}</span>
-                </div>
-              );
-            })
-          )}
+      <div className="max-w-3xl mx-auto mt-10 px-4 lg:px-0">
+        <Header title="All Events" backUrl="/" />
+        <div className="flex md:flex-row flex-col">
+          <div className="md:w-2/5 md:border-r md:border-[#e6e6e69c] md:pr-8 md:mb-0 mb-7">
+            <div className="custom-datepicker  md:text-left text-center">
+              <DatePicker selected={startDate} onChange={onChange} startDate={startDate} endDate={endDate} selectsRange inline />
+            </div>
+          </div>
+
+          <div className="md:w-3/5 md:pl-8">
+            <div className="md:max-h-[430px] overflow-y-auto xxs:w-[340px] w-[320px] md:w-auto md:mx-0 mx-auto mb-6 md:mb-0">
+              {isLoading ? (
+                <div className="loading text-sm text-center">Fetching...</div>
+              ) : (
+                events.map(({ id, start, end }: { id: string; start: string; end: string }, index) => {
+                  return (
+                    <div className="mb-5">
+                      <p></p>
+                      <p className="text-sm leading-none pb-3 w-1/2">{id}</p>
+                      <div className="flex sm:flex-row flex-col md:justify-start justify-center">
+                        <span className="text-sm sm:w-[calc(50%_-_8px)] w-full mr-[8px] border border-[#dedede] px-2 py-1.5 rounded bg-[#f7f7f7] md:mb-0 mb-2">
+                          {moment(start).local().format("YYYY-MM-DD HH:mm:ss")}
+                        </span>
+                        <span className="text-sm sm:w-[calc(50%_-_8px)] w-full border border-[#dedede] px-2 py-1.5 rounded bg-[#f7f7f7]">{moment(end).local().format("YYYY-MM-DD HH:mm:ss")}</span>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
