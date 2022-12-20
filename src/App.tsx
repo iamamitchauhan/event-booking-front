@@ -11,11 +11,11 @@ function App() {
       <h1>Booking Event</h1>
 
       <NavLink to="/book-event">
-        <button>Book Event</button>
+        <button className="">Book Event</button>
       </NavLink>
 
       <NavLink to="/events">
-        <button>Show Events</button>
+        <button className="">Show Events</button>
       </NavLink>
     </div>
   );

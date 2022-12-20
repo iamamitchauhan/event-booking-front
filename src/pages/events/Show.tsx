@@ -6,8 +6,29 @@ import Header from "../../components/Header";
 import { getEvents } from "../../service/event";
 
 const Show = () => {
-  const [events, setEvents] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [events, setEvents] = useState([
+    {
+      id: "ap8nxHrEWXgdLoFZLJxf",
+      start: "2022-12-20T05:00:00.000Z",
+      end: "2022-12-20T05:14:00.000Z",
+    },
+    {
+      id: "5cA15bO5H5WQbXx6QoYP",
+      start: "2022-12-20T05:15:00.000Z",
+      end: "2022-12-20T05:30:00.000Z",
+    },
+    {
+      id: "1ocVQm1bURcShqjNygOL",
+      start: "2022-12-20T05:30:01.000Z",
+      end: "2022-12-20T05:45:01.000Z",
+    },
+    {
+      id: "XqJrEiJHxFnMQG9IQA2q",
+      start: "2022-12-21T05:30:00.000Z",
+      end: "2022-12-21T06:00:00.000Z",
+    },
+  ]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date(moment().add("d", 1).format()));
@@ -42,7 +63,7 @@ const Show = () => {
 
   useEffect(() => {
     if (startDate && endDate) {
-      getEventsList(startDate, endDate);
+      // getEventsList(startDate, endDate);
     }
   }, [startDate, endDate]);
 
@@ -58,18 +79,20 @@ const Show = () => {
       </div>
       <div>
         <div>
-          {isLoading
-            ? "Fetching..."
-            : events.map(({ id, start, end }: { id: string; start: string; end: string }, index) => {
-                return (
-                  <div>
-                    <p>{id}</p>
-                    <span>{moment(start).local().format("YYYY-MM-DD HH:mm:ss")}</span>
-                    <br />
-                    <span>{moment(end).local().format("YYYY-MM-DD HH:mm:ss")}</span>
-                  </div>
-                );
-              })}
+          {isLoading ? (
+            <div className="loading">Fetching...</div>
+          ) : (
+            events.map(({ id, start, end }: { id: string; start: string; end: string }, index) => {
+              return (
+                <div>
+                  <p>{id}</p>
+                  <span>{moment(start).local().format("YYYY-MM-DD HH:mm:ss")}</span>
+                  <br />
+                  <span>{moment(end).local().format("YYYY-MM-DD HH:mm:ss")}</span>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

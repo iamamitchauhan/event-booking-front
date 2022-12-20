@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 import "react-datepicker/dist/react-datepicker.css";
+import "./index.css";
 
 import router from "./routing";
 
