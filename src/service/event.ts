@@ -18,7 +18,7 @@ interface GetFreeSlotProps {
 }
 const getFreeAvailableSlot = async ({ date, timeZone }: GetFreeSlotProps) => {
   try {
-    return await axios.post(process.env.REACT_APP_HOST_URL + "/events/free-slot?date=" + date + "&timeZone=" + timeZone);
+    return await axios.get(process.env.REACT_APP_HOST_URL + "/events/free-slots?date=" + date + "&timezone=" + timeZone);
   } catch (error) {
     return error;
   }
@@ -30,7 +30,10 @@ interface CreateEvent {
 }
 const createEvent = async ({ datetime, duration }: CreateEvent) => {
   try {
-    return await axios.post(process.env.REACT_APP_HOST_URL + "/events/free-slot?date=" + datetime + "&timeZone=" + duration);
+    return await axios.post(process.env.REACT_APP_HOST_URL + "/events", {
+      datetime,
+      duration,
+    });
   } catch (error) {
     return error;
   }

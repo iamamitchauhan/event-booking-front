@@ -44,8 +44,8 @@ const Show = () => {
     try {
       setIsLoading(true);
       const { status, data }: any = await getEvents({
-        startDate: moment(startDate).utc().startOf("day").format(),
-        endDate: moment(endDate).utc().endOf("day").format(),
+        startDate: moment(startDate).utc().startOf("day").toISOString(),
+        endDate: moment(endDate).utc().endOf("day").toISOString(),
       });
 
       if (status === 200) {
@@ -63,7 +63,7 @@ const Show = () => {
 
   useEffect(() => {
     if (startDate && endDate) {
-      // getEventsList(startDate, endDate);
+      getEventsList(startDate, endDate);
     }
   }, [startDate, endDate]);
 
